@@ -13,9 +13,9 @@ class ChooseLoginRegistrationActivity : AppCompatActivity() {
     private var mRegister: Button? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_choose_login_registration)
+        setContentView(R.layout.choose_login_signup_activity)
         mLogin = findViewById<View>(R.id.login) as Button
-        mRegister = findViewById<View>(R.id.register) as Button
+        mRegister = findViewById<View>(R.id.signup) as Button
         mLogin!!.setOnClickListener(View.OnClickListener {
             val intent = Intent(this@ChooseLoginRegistrationActivity, LoginActivity::class.java)
             startActivity(intent)
@@ -28,13 +28,5 @@ class ChooseLoginRegistrationActivity : AppCompatActivity() {
             finish()
             return@OnClickListener
         })
-    }
-
-    fun goToSettings(view: View) {
-        startActivity(Intent(this, SettingsActivity::class.java))
-    }
-
-    fun goToMatches(view: View) {
-        startActivity(Intent(this, MatchesActivity::class.java))
     }
 }

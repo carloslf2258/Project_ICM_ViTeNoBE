@@ -70,7 +70,7 @@
             android:padding="16dp"
             android:background="@drawable/login_background"
             android:textColor="#FFFFFF"
-            android:onClick="goToCreateAccount" />
+            android:onClick="goChoose" />
 
     </LinearLayout>
 

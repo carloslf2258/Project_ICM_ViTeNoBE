@@ -73,10 +73,21 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(this, ChooseLoginRegistrationActivity::class.java))
         finish()
     }
+    fun goToSettings(view: View) {
+        startActivity(Intent(this, SettingsActivity::class.java))
+    }
+
+    fun goToMatches(view: View) {
+        startActivity(Intent(this, MatchesActivity::class.java))
+    }
 
     // Função que será chamada ao clicar no botão "Aceito"
-    fun goToCreateAccount(view: View) {
+    /*fun goToCreateAccount(view: View) {
         val intent = Intent(this, CreateAccountActivity::class.java)
+        startActivity(intent)
+    }*/
+    fun goChoose(view: View) {
+        val intent = Intent(this, ChooseLoginRegistrationActivity::class.java)
         startActivity(intent)
     }
 
