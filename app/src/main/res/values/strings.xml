@@ -8,4 +8,5 @@
     <string name="toast_left">Left</string>
     <string name="toast_right">Right</string>
     <string name="toast_new_connection">New Connection</string>
+    <string name="title_activity_create_account">CreateAccountActivity</string>
 </resources>

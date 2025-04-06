@@ -22,12 +22,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_welcome)
 
         rowItems = mutableListOf()
         arrayAdapter = arrayAdapter(this, R.layout.item, rowItems)
 
-        val flingContainer = findViewById<SwipeFlingAdapterView>(R.id.frame)
+        val flingContainer = findViewById<SwipeFlingAdapterView>(R.id.welcome)
         flingContainer.adapter = arrayAdapter
 
         viewModel.cardList.observe(this, Observer {
@@ -74,11 +74,10 @@ class MainActivity : AppCompatActivity() {
         finish()
     }
 
-    fun goToSettings(view: View) {
-        startActivity(Intent(this, SettingsActivity::class.java))
+    // Função que será chamada ao clicar no botão "Aceito"
+    fun goToCreateAccount(view: View) {
+        val intent = Intent(this, CreateAccountActivity::class.java)
+        startActivity(intent)
     }
 
-    fun goToMatches(view: View) {
-        startActivity(Intent(this, MatchesActivity::class.java))
-    }
 }

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.example.vitenobe.Matches.MatchesActivity
 
 class ChooseLoginRegistrationActivity : AppCompatActivity() {
     private var mLogin: Button? = null
@@ -27,5 +28,13 @@ class ChooseLoginRegistrationActivity : AppCompatActivity() {
             finish()
             return@OnClickListener
         })
+    }
+
+    fun goToSettings(view: View) {
+        startActivity(Intent(this, SettingsActivity::class.java))
+    }
+
+    fun goToMatches(view: View) {
+        startActivity(Intent(this, MatchesActivity::class.java))
     }
 }

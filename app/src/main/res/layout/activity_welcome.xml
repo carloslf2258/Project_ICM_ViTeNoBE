@@ -1,60 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:src="@drawable/app"
-        android:layout_marginBottom="16dp"/>
 
-    <TextView
+    <!-- SwipeFlingAdapterView no fundo -->
+    <com.lorentzos.flingswipe.SwipeFlingAdapterView
+        android:id="@+id/welcome"
+        android:background="@android:color/white"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Bem-vindo(a) ao ViTeNoBE."
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Siga estas Regras da casa."
-        android:textSize="16sp"
-        android:layout_marginBottom="24dp"/>
+        android:layout_height="match_parent"
+        app:rotation_degrees="15.5" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/app"
+            android:layout_marginBottom="16dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Seja você mesmo."
+            android:text="Bem-vindo(a) ao ViTeNoBE."
+            android:textSize="32sp"
             android:textStyle="bold"
-            android:layout_marginBottom="4dp"/>
+            android:layout_marginBottom="8dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Certifique-se de que as suas fotos, idade e biografia são fiéis à sua pessoa."
-            android:layout_marginBottom="16dp"/>
+            android:text="Siga estas Regras da casa."
+            android:textSize="16sp"
+            android:layout_marginBottom="24dp" />
 
-        <!-- Repeat for other rules -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Seja você mesmo."
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Certifique-se de que as suas fotos, idade e biografia são fiéis à sua pessoa."
+                android:layout_marginBottom="16dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/aceito_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Aceito"
+            android:padding="16dp"
+            android:background="@drawable/login_background"
+            android:textColor="#FFFFFF"
+            android:onClick="goToCreateAccount" />
 
     </LinearLayout>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Aceito"
-        android:padding="16dp"
-        android:background="@drawable/login_background"
-        android:textColor="#FFFFFF"/>
+</FrameLayout>
 
-</LinearLayout>
