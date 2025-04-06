@@ -19,7 +19,7 @@
             android:text="«"
             android:textSize="24sp"
             android:textColor="@android:color/white"
-            android:onClick="onBack" />
+            android:onClick="onBackPressed" />
     </LinearLayout>
 
     <!-- Title -->

@@ -62,6 +62,7 @@ dependencies {
     implementation("com.google.firebase:firebase-storage-ktx")
     // Glide moderno
     implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation(libs.androidx.constraintlayout)
     kapt("com.github.bumptech.glide:compiler:4.16.0")
 
     implementation("com.lorentzos.swipecards:library:1.0.9")

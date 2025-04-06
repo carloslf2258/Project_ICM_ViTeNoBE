@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ViTeNoBE</string>
+    <string name="voltar">Voltar</string>
+    <string name="o_teu_aniversario">O teu aniversário?</string>
+    <string name="perfil_mostra_a_tua_idade_n_data_nascimento">O teu perfil mostra a tua idade, não data de nascimento.</string>
+    <string name="mostrar_o_meu_genero_no_meu_perfil">Mostrar o meu género no meu perfil</string>
+    <string name="seguinte">Seguinte</string>
 </resources>

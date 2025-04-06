@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var usersDb: DatabaseReference
 
-    private var currentUId: String? = null
+    private lateinit var currentUId: String
     private lateinit var rowItems: MutableList<cards>
     private var userSex: String? = null
     private var oppositeUserSex: String? = null
@@ -28,10 +28,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Inicializa os objetos Firebase
         usersDb = FirebaseDatabase.getInstance().reference.child("Users")
         mAuth = FirebaseAuth.getInstance()
-        currentUId = mAuth.currentUser?.uid
 
+        // Verifica se o currentUser é nulo
+        currentUId = mAuth.currentUser?.uid ?: throw IllegalStateException("User not authenticated")
+
+        // Inicializa outros elementos da UI
         rowItems = mutableListOf()
         arrayAdapter = arrayAdapter(this, R.layout.item, rowItems)
 
@@ -50,7 +54,7 @@ class MainActivity : AppCompatActivity() {
             override fun onLeftCardExit(dataObject: Any) {
                 val userId = (dataObject as cards).userId
                 usersDb.child(userId)
-                    .child("connections").child("nope").child(currentUId ?: return)
+                    .child("connections").child("nope").child(currentUId)
                     .setValue(true)
                 Toast.makeText(this@MainActivity, "Left", Toast.LENGTH_SHORT).show()
             }
@@ -58,7 +62,7 @@ class MainActivity : AppCompatActivity() {
             override fun onRightCardExit(dataObject: Any) {
                 val userId = (dataObject as cards).userId
                 usersDb.child(userId)
-                    .child("connections").child("yeps").child(currentUId ?: return)
+                    .child("connections").child("yeps").child(currentUId)
                     .setValue(true)
                 isConnectionMatch(userId)
                 Toast.makeText(this@MainActivity, "Right", Toast.LENGTH_SHORT).show()
@@ -73,8 +77,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Functions
+    fun onBackPressed(view: View) {
+        onBackPressedDispatcher.onBackPressed()
+    }
+
     private fun isConnectionMatch(userId: String) {
-        val connectionPath = usersDb.child(currentUId ?: return)
+        val connectionPath = usersDb.child(currentUId)
             .child("connections").child("yeps").child(userId)
 
         connectionPath.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -83,10 +92,12 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this@MainActivity, "New Connection", Toast.LENGTH_LONG).show()
                     val key = FirebaseDatabase.getInstance().reference.child("Chat").push().key
                     key?.let {
-                        usersDb.child(userId).child("connections").child("matches")
-                            .child(currentUId!!).child("ChatId").setValue(it)
+                        usersDb.child(userId)
+                            .child("connections").child("matches")
+                            .child(currentUId).child("ChatId").setValue(it)
 
-                        usersDb.child(currentUId!!).child("connections").child("matches")
+                        usersDb.child(currentUId)
+                            .child("connections").child("matches")
                             .child(userId).child("ChatId").setValue(it)
                     }
                 }
@@ -97,8 +108,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkUserSex() {
-        val uid = mAuth.currentUser?.uid ?: return
-        val userDb = usersDb.child(uid)
+        val userDb = usersDb.child(currentUId)
 
         userDb.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -126,8 +136,8 @@ class MainActivity : AppCompatActivity() {
                 if (
                     dataSnapshot.exists() &&
                     sex == oppositeUserSex &&
-                    !dataSnapshot.child("connections").child("nope").hasChild(currentUId.toString()) &&
-                    !dataSnapshot.child("connections").child("yeps").hasChild(currentUId.toString())
+                    !dataSnapshot.child("connections").child("nope").hasChild(currentUId) &&
+                    !dataSnapshot.child("connections").child("yeps").hasChild(currentUId)
                 ) {
                     val item = cards(
                         userId = dataSnapshot.key ?: return,
@@ -146,17 +156,17 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    fun logoutUser(view: View?) {
+    fun logoutUser(view: View) {
         mAuth.signOut()
         startActivity(Intent(this, ChooseLoginRegistrationActivity::class.java))
         finish()
     }
 
-    fun goToSettings(view: View?) {
+    fun goToSettings(view: View) {
         startActivity(Intent(this, SettingsActivity::class.java))
     }
 
-    fun goToMatches(view: View?) {
+    fun goToMatches(view: View) {
         startActivity(Intent(this, MatchesActivity::class.java))
     }
 }
