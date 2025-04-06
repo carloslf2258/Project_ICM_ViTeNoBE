@@ -61,7 +61,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Mais"
+            android:text="Outro"
             android:background="#1E2F4F"
             android:textColor="@android:color/white"
             android:padding="12dp"
