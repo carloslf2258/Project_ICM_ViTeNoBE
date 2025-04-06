@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/login_background"
+    android:padding="16dp">
+
+    <!-- Toolbar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/baseline_arrow_back_24"/>
+    </LinearLayout>
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Qual é o teu primeiro nome?"
+        android:textSize="24sp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:padding="8dp" />
+
+    <!-- Input Field -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1E2F4F"
+        android:padding="12dp"
+        android:layout_margin="8dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:backgroundTint="#1E2F4F"
+        android:clipToPadding="false">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Digite seu nome"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="32dp"
+            android:padding="8dp"
+            android:id="@+id/firstName" />
+    </LinearLayout>
+
+    <!-- Helper Text -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="É assim que aparecerá no teu perfil."
+        android:textColor="#B0BEC5"
+        android:paddingStart="8dp"
+        android:paddingTop="4dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Não o podes alterar mais tarde."
+        android:textColor="#B0BEC5"
+        android:paddingStart="8dp" />
+
+
+
+
+</LinearLayout>

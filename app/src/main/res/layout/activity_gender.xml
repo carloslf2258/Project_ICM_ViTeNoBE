@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0A1A3B"
+    android:padding="16dp">
+
+    <!-- Toolbar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="«"
+            android:textSize="24sp"
+            android:textColor="@android:color/white"
+            android:onClick="onBack" />
+    </LinearLayout>
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Qual é o teu género?"
+        android:textSize="24sp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:padding="8dp" />
+
+    <!-- Gender Options -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mulher"
+            android:background="#1E2F4F"
+            android:textColor="@android:color/white"
+            android:padding="12dp"
+            android:onClick="onSelectGender" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Homem"
+            android:background="#1E2F4F"
+            android:textColor="@android:color/white"
+            android:padding="12dp"
+            android:onClick="onSelectGender"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mais"
+            android:background="#1E2F4F"
+            android:textColor="@android:color/white"
+            android:padding="12dp"
+            android:onClick="onSelectGender"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+
+    <!-- Show Gender Option -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center_vertical">
+
+        <CheckBox
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:id="@+id/showGender" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mostrar o meu género no meu perfil"
+            android:textColor="#B0BEC5"
+            android:paddingStart="8dp" />
+    </LinearLayout>
+
+    <!-- Spacer to push button to bottom -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Next Button -->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Seguinte"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        android:background="@color/black"
+        android:padding="12dp"
+        android:id="@+id/onNext"
+        android:enabled="true"
+        android:layout_margin="8dp" />
+</LinearLayout>

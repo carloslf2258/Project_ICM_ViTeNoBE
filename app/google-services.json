@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "984507452211",
+    "project_id": "vitenobe-c8b20",
+    "storage_bucket": "vitenobe-c8b20.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:984507452211:android:ba685a054b3c6292a14c46",
+        "android_client_info": {
+          "package_name": "com.example.ViTeNoBE"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRB3rh_aNqAi3Wr6JzU5W66o_rN8GyW7Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:984507452211:android:148385fd04e33d49a14c46",
+        "android_client_info": {
+          "package_name": "com.example.vitenobe"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRB3rh_aNqAi3Wr6JzU5W66o_rN8GyW7Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/login_background"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Adiciona as tuas\nfotos atuais"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp"/>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:columnCount="3"
+        android:rowCount="2">
+
+        <!-- Repeat this 6 times for each photo slot -->
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="4dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rounded_corner"/>
+
+            <ImageButton
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="bottom|end"
+                android:src="@drawable/login_background"
+                android:background="@drawable/rounded_corner"/>
+
+        </FrameLayout>
+        <!-- Repeat for other slots -->
+
+    </GridLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Olá! Vamos adicionar 2 para começar.\nRecomendamos uma foto de rosto."
+        android:gravity="center"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Seguinte"
+        android:padding="16dp"
+        android:background="@drawable/rounded_corner"
+        android:textColor="#FFFFFF"/>
+
+</LinearLayout>
