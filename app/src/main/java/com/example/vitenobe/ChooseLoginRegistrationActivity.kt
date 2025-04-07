@@ -29,4 +29,10 @@ class ChooseLoginRegistrationActivity : AppCompatActivity() {
             return@OnClickListener
         })
     }
+
+    fun OnBackPressed(view: View) {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
 }
