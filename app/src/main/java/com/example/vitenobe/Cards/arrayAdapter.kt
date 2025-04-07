@@ -14,23 +14,23 @@ import com.example.vitenobe.R
 class arrayAdapter(context: Context?, resourceId: Int, items: List<cards?>?) : ArrayAdapter<cards?>(context!!, resourceId, items!!) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        var convertView = convertView
         val card_item = getItem(position)
-        if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item, parent, false)
-        }
-        val name = convertView!!.findViewById<TextView>(R.id.name)
-        val image = convertView.findViewById<ImageView>(R.id.image)
+        val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.item, parent, false)
+
+        val name = view.findViewById<TextView>(R.id.name)
+        val image = view.findViewById<ImageView>(R.id.image)
 
         name.text = card_item!!.name
 
-        if (card_item.profileImageUrl == "default") {
-            Glide.with(convertView.context).load(R.mipmap.ic_launcher).into(image)
+        if (card_item.profileImageUrl != null && card_item.profileImageUrl != "default") {
+            Glide.with(view.context).load(card_item.profileImageUrl).into(image)
         } else {
-            Glide.with(convertView.context).load(card_item.profileImageUrl).into(image)
+            Glide.with(view.context).load(R.mipmap.ic_launcher).into(image)
         }
 
-        return convertView
+
+        return view
     }
+
 
 }
