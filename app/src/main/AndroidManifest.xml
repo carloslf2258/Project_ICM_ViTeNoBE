@@ -25,6 +25,9 @@
         </activity>
         <activity android:name=".CreateAccountActivity"></activity>
         <activity android:name=".ChooseLoginRegistrationActivity"></activity>
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".RegistrationActivity"></activity>
+
     </application>
 
 </manifest>

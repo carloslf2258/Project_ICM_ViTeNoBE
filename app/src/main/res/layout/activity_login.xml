@@ -4,21 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.vitenobe.ChooseLoginRegistrationActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@color/blue_super_dark"
+    tools:context="com.example.vitenobe.LoginActivity">
+
+    <!-- Ícone da App -->
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:src="@drawable/app"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Email -->
     <EditText
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="email"
-        android:id="@+id/email"/>
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:background="@drawable/rounded_corner"
+        android:padding="12dp"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Password -->
     <EditText
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="password"
-        android:id="@+id/password"/>
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:background="@drawable/rounded_corner"
+        android:padding="12dp"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Botão Login -->
     <Button
+        android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Login"
-        android:id="@+id/login"/>
+        android:textColor="@android:color/white"
+        android:background="@drawable/rounded_corner"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="loginUser" />
+
+
+    <!-- Botão Voltar Atrás -->
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Voltar"
+        android:textColor="@android:color/white"
+        android:background="@drawable/rounded_corner"
+        android:padding="12dp"
+        android:onClick="OnBackPressed" />
+
+
+
 </LinearLayout>

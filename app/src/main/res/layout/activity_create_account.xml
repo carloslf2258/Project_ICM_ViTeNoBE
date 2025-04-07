@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/login_background"
-    tools:context=".LoginActivity">
+    tools:context=".RegistrationActivity">
 
     <Toolbar
         android:layout_width="match_parent"
@@ -15,10 +15,11 @@
 
         <ImageView
             android:id="@+id/arrow_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:src="@drawable/baseline_arrow_back_24"
-            app:tint="@color/white"/>
+            app:tint="@color/white"
+            android:onClick="OnBackPressed"/>
     </Toolbar>
 
     <LinearLayout
@@ -45,9 +46,8 @@
             android:textSize="36sp"/>
     </LinearLayout>
 
-
-
     <EditText
+        android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -58,15 +58,13 @@
         android:hint="Username"
         android:textColorHint="@color/white"
         android:padding="18dp"
-        android:inputType="textEmailAddress"
+        android:inputType="textPersonName"
         android:drawableStart="@drawable/baseline_email_24"
         android:drawableTint="@color/white"
         android:drawablePadding="10dp"/>
 
-
-
-
     <EditText
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -83,6 +81,7 @@
         android:drawablePadding="10dp"/>
 
     <EditText
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -98,6 +97,7 @@
         android:drawablePadding="10dp"/>
 
     <EditText
+        android:id="@+id/birthday"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -108,13 +108,12 @@
         android:hint="BirthDay"
         android:textColorHint="@color/white"
         android:padding="18dp"
-        android:inputType="textEmailAddress"
-        android:drawableStart="@drawable/baseline_email_24"
+        android:inputType="date"
         android:drawableTint="@color/white"
         android:drawablePadding="10dp"/>
 
-
     <EditText
+        android:id="@+id/interests"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -125,8 +124,7 @@
         android:hint="Interesses"
         android:textColorHint="@color/white"
         android:padding="18dp"
-        android:inputType="textEmailAddress"
-        android:drawableStart="@drawable/baseline_email_24"
+        android:inputType="text"
         android:drawableTint="@color/white"
         android:drawablePadding="10dp"/>
 
@@ -153,6 +151,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Create Profile"
@@ -162,5 +161,4 @@
         android:layout_margin="20dp"
         android:backgroundTint="@color/black"
         android:paddingVertical="10dp"/>
-
 </LinearLayout>
