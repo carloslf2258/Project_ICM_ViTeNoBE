@@ -20,7 +20,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginEnd="16dp"
-            android:src="@drawable/ic_launcher_background"
+            android:src="@drawable/ic_launcher_foreground"
             android:contentDescription="@string/project_id"
             android:layout_gravity="center_vertical"
             android:scaleType="centerCrop" />

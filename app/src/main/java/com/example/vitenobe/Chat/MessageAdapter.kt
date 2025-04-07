@@ -1,5 +1,5 @@
 package com.example.vitenobe.Chat
-
+/*
 import android.os.Message
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -29,7 +29,6 @@ class MessageAdapter(private val messages: List<Message>) : RecyclerView.Adapter
     class MessageViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val messageTextView: TextView = view.findViewById(R.id.messageText)
 
-        // Método para associar dados à View
         fun bind(message: Message) {
             messageTextView.text = message.text
             // Aqui, podemos adicionar lógica para formatar ou exibir a mensagem dependendo do senderId, etc.
@@ -47,4 +46,5 @@ class MessageAdapter(private val messages: List<Message>) : RecyclerView.Adapter
         }
     }
 }
+*/
 
