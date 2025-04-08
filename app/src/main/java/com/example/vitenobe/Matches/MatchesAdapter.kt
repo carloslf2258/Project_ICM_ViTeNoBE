@@ -11,22 +11,21 @@ import com.example.vitenobe.R
 
 class MatchesAdapter(private val matchesList: List<MatchesObject>, private val context: Context) : RecyclerView.Adapter<MatchesViewHolders>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MatchesViewHolders {
-        val layoutView = LayoutInflater.from(parent.context).inflate(R.layout.item_matches, null, false)
-        val lp = RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        layoutView.layoutParams = lp
+        val layoutView = LayoutInflater.from(parent.context).inflate(R.layout.item_matches, parent, false)
         return MatchesViewHolders(layoutView)
     }
 
     override fun onBindViewHolder(holder: MatchesViewHolders, position: Int) {
-        holder.mMatchId.text = matchesList[position].userId
-        holder.mMatchName.text = matchesList[position].name
-        if (matchesList[position].profileImageUrl != "default") {
-            Glide.with(context).load(matchesList[position].profileImageUrl).into(holder.mMatchImage)
-        }
+        val match = matchesList[position]
+        holder.mMatchId.text = match.userId
+        holder.mMatchName.text = match.name
+
+        match.profileImageUrl.takeIf { it.isNotEmpty() }?.let {
+            Glide.with(context.applicationContext).load(it).into(holder.mMatchImage)
+        } ?: Glide.with(context.applicationContext).load(R.drawable.ic_launcher_foreground).into(holder.mMatchImage)
     }
 
     override fun getItemCount(): Int {
         return matchesList.size
     }
-
 }

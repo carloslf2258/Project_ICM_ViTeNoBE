@@ -3,12 +3,10 @@ package com.example.vitenobe.Matches
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.vitenobe.ChooseLoginRegistrationActivity
 import com.example.vitenobe.MainActivity
 import com.example.vitenobe.R
 import com.google.firebase.auth.FirebaseAuth
@@ -22,7 +20,7 @@ class MatchesActivity : AppCompatActivity() {
     private var mRecyclerView: RecyclerView? = null
     private var mMatchesAdapter: RecyclerView.Adapter<*>? = null
     private var mMatchesLayoutManager: RecyclerView.LayoutManager? = null
-    private var cusrrentUserID: String? = null
+    private var currentUserID: String? = null
     private val resultsMatches = ArrayList<MatchesObject>()
     private val dataSetMatches: List<MatchesObject> get() = resultsMatches
 
@@ -30,7 +28,7 @@ class MatchesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_matches)
 
-        cusrrentUserID = FirebaseAuth.getInstance().currentUser!!.uid
+        currentUserID = FirebaseAuth.getInstance().currentUser!!.uid
 
         // RecyclerView
         mRecyclerView = findViewById(R.id.recyclerView)
@@ -41,10 +39,6 @@ class MatchesActivity : AppCompatActivity() {
         mMatchesAdapter = MatchesAdapter(dataSetMatches, this@MatchesActivity)
         mRecyclerView!!.adapter = mMatchesAdapter
 
-        // Botão de Voltar
-        val btnBack: Button = findViewById(R.id.btnBack)
-        btnBack.setOnClickListener { finish() }  // Volta para a tela anterior
-
         // Carregar os Matches
         userMatchId()
     }
@@ -52,7 +46,7 @@ class MatchesActivity : AppCompatActivity() {
     private fun userMatchId() {
         val matchDb = FirebaseDatabase.getInstance().reference
             .child("Users")
-            .child(cusrrentUserID.toString())
+            .child(currentUserID.toString())
             .child("connections")
             .child("matches")
 
@@ -101,7 +95,7 @@ class MatchesActivity : AppCompatActivity() {
         })
     }
 
-    fun OnBackPressed(view: View) {
+    fun onBackPressed(view: View) {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()

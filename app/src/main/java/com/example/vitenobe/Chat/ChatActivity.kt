@@ -12,17 +12,15 @@ import com.google.firebase.database.*
 import java.util.*
 
 class ChatActivity : AppCompatActivity() {
-    private var mRecyclerView: RecyclerView? = null
-    private var mChatAdapter: RecyclerView.Adapter<*>? = null
-    private var mChatLayoutManager: RecyclerView.LayoutManager? = null
-    private var mSendEditText: EditText? = null
-    private var mSendButton: Button? = null
-    private var currentUserID: String? = null
-    private var matchId: String? = null
+    private lateinit var mRecyclerView: RecyclerView
+    private lateinit var mSendEditText: EditText
+    private lateinit var mSendButton: Button
+    private lateinit var currentUserID: String
+    private lateinit var matchId: String
     private var chatId: String? = null
 
-    private var mDatabaseUser: DatabaseReference? = null
-    private var mDatabaseChat: DatabaseReference? = null
+    private lateinit var mDatabaseUser: DatabaseReference
+    private lateinit var mDatabaseChat: DatabaseReference
 
     private val resultsChat = ArrayList<ChatObject>()
     private val dataSetChat: List<ChatObject>
@@ -32,55 +30,55 @@ class ChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
-        matchId = intent.extras?.getString("matchId")
-        currentUserID = FirebaseAuth.getInstance().currentUser?.uid
+        matchId = intent.extras?.getString("matchId") ?: ""
+        currentUserID = FirebaseAuth.getInstance().currentUser?.uid ?: ""
 
         mDatabaseUser = FirebaseDatabase.getInstance().reference
             .child("Users")
-            .child(currentUserID ?: "")
+            .child(currentUserID)
             .child("connections")
             .child("matches")
-            .child(matchId ?: "")
+            .child(matchId)
             .child("ChatId")
 
         mDatabaseChat = FirebaseDatabase.getInstance().reference.child("Chat")
 
         mRecyclerView = findViewById(R.id.recyclerView)
-        mRecyclerView?.apply {
+        mRecyclerView.apply {
             isNestedScrollingEnabled = false
-            setHasFixedSize(false)
-            layoutManager = LinearLayoutManager(this@ChatActivity).also { mChatLayoutManager = it }
-            adapter = ChatAdapter(dataSetChat, this@ChatActivity).also { mChatAdapter = it }
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(this@ChatActivity)
+            adapter = ChatAdapter(dataSetChat, this@ChatActivity)
         }
 
         mSendEditText = findViewById(R.id.message)
         mSendButton = findViewById(R.id.send)
 
-        mSendButton?.setOnClickListener { sendMessage() }
+        mSendButton.setOnClickListener { sendMessage() }
 
         setupChat()
     }
 
     private fun sendMessage() {
-        val sendMessageText = mSendEditText?.text.toString().trim()
+        val sendMessageText = mSendEditText.text.toString().trim()
         if (sendMessageText.isNotEmpty()) {
-            val newMessageDb = mDatabaseChat?.push()
+            val newMessageDb = mDatabaseChat.push()
             val newMessage = mapOf(
                 "createdByUser" to currentUserID,
                 "text" to sendMessageText
             )
-            newMessageDb?.setValue(newMessage)
-            mSendEditText?.setText("") // limpa o campo depois de enviar
+            newMessageDb.setValue(newMessage)
+            mSendEditText.setText("") // Limpa o campo depois de enviar
         }
     }
 
     private fun setupChat() {
-        // Carregar ChatId primeiro, e só depois os messages
-        mDatabaseUser?.addListenerForSingleValueEvent(object : ValueEventListener {
+        // Carregar ChatId primeiro, e só depois as mensagens
+        mDatabaseUser.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     chatId = snapshot.value.toString()
-                    mDatabaseChat = mDatabaseChat?.child(chatId!!)
+                    mDatabaseChat = mDatabaseChat.child(chatId ?: "")
                     loadChatMessages()
                 }
             }
@@ -90,7 +88,7 @@ class ChatActivity : AppCompatActivity() {
     }
 
     private fun loadChatMessages() {
-        mDatabaseChat?.addChildEventListener(object : ChildEventListener {
+        mDatabaseChat.addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(dataSnapshot: DataSnapshot, s: String?) {
                 val message = dataSnapshot.child("text").value?.toString()
                 val createdByUser = dataSnapshot.child("createdByUser").value?.toString()
@@ -98,8 +96,8 @@ class ChatActivity : AppCompatActivity() {
                 if (message != null && createdByUser != null) {
                     val isCurrentUser = createdByUser == currentUserID
                     resultsChat.add(ChatObject(message, isCurrentUser))
-                    mChatAdapter?.notifyItemInserted(resultsChat.size - 1)
-                    mRecyclerView?.scrollToPosition(resultsChat.size - 1)
+                    mRecyclerView.adapter?.notifyItemInserted(resultsChat.size - 1)
+                    mRecyclerView.scrollToPosition(resultsChat.size - 1)  // Scroll para a última mensagem
                 }
             }
 
